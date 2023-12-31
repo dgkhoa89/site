@@ -2,6 +2,9 @@ var express = require('express');
 var app = express();
 var fortunes = require('./lib/fortunes')
 
+//disbale x-powered-by
+app.disable('x-powered-by')
+
 // set up handlebars view engine
 var handlebars = require('express3-handlebars')
  .create({ defaultLayout:'main' });
@@ -19,6 +22,15 @@ app.get('/about', function (req, res) {
     res.render('about', { fortune: fortunes.getFortune() });
 });
 
+//print headers
+app.get('/headers', function(req,res){
+    res.set('Content-Type','text/plain');
+    var s = '';
+    for(var name in req.headers) s += name + ': ' + req.headers[name] + '\n';
+    res.send(s);
+   });
+
+   
 // custom 404 page
 app.use(function (req, res, next) {
     res.status(404);
