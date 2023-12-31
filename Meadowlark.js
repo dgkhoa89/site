@@ -15,6 +15,15 @@ app.use(express.static(__dirname + '/public'));
 app.set('port', process.env.PORT || 3000);
 
 app.get('/', function (req, res) {
+    // console.log('ip: '+req.ip);
+    // console.log('cookies: '+ req.cookies);
+    // console.log('params: '+req.params);
+    // console.log('body: '+req.body);
+    // console.log('route: '+req.route)
+    // console.log('accepts: '+req.accepts );
+    // console.log('protocol: '+req.protocol );
+    // console.log('secure: '+req.secure);
+    // console.log('accepted lang: '+req.acceptsLanguages );
     res.render('home');
 });
 
